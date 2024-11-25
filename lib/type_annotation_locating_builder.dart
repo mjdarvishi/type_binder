@@ -1,5 +1,5 @@
 import 'package:build/build.dart';
-import 'package:schema_registry/annotation.dart';
+import 'package:type_binder/annotation.dart';
 import 'package:source_gen/source_gen.dart';
 
 Builder typeAnnotationLocatingBuilder(BuilderOptions options) => TypeAnnotationLocatingBuilder();

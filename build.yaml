@@ -1,0 +1,24 @@
+targets:
+  $default:
+    builders:
+      schema_registry|type_annotation_locating_builder:
+        enabled: true
+      schema_registry|registry_builder:
+        enabled: true
+
+builders:
+  type_annotation_locating_builder:
+    import: "package:schema_registry/type_annotation_locating_builder.dart"
+    builder_factories: ["typeAnnotationLocatingBuilder"]
+    build_extensions: {".dart": [".exports"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+
+  registry_builder:
+    import: "package:schema_registry/registry_builder.dart"
+    builder_factories: ["registryBuilder"]
+    build_extensions: {r"$lib$": ["registry.dart"]}
+    auto_apply: root_package
+    required_inputs: [".exports"]
+    build_to: source
